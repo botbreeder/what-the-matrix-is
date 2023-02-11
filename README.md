@@ -1,5 +1,5 @@
 # What the matrix is
-A 3D game engine, with reactive textures made of structured natural language.
+A 3D world engine, with semantic textures applied to meshes, lights and sounds. 
 
 ![The Matrix](https://github.com/botbreeder/what-the-matrix-is/raw/main/bm.jpg)
 
