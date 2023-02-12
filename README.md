@@ -15,5 +15,5 @@ What I have in mind is not like [X3D](https://en.wikipedia.org/wiki/X3D) for ins
 
 A given node has a 3D shape, and is related to (is located in/contains) several other 3D shapes by relations. A relation-type is identified primarily by a natural language sentence with holes. Relations are themselves located in space-time, and after all, nodes are just like 0-arity relations. By default, relations spatially cover what they relate. Relations are in fact functions of what comes next: it's like a never satisfied spreadsheet.
 
-Let's give a name to these nodes/relations. Let's call them Narratives.
+Let's give a name to these nodes/relations. Let's call them [Narratives](https://github.com/botbreeder/mudbasic#narratives-as-reusable-blocks). Just replace the numbers by global `$names` and local `%names` from [OpenDDL](http://openddl.org/).
 
