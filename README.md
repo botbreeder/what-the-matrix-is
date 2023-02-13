@@ -41,16 +41,3 @@ And grouping things as ordered lists too.
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
-Maybe a few shortcuts. Or not.
-
-```
-"abc"
-```
-
-is rendered as `{string "abc"}`.
-
-```
-1.0
-```
-
-is rendered as a float, and so on.
