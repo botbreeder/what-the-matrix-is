@@ -29,7 +29,7 @@ a(b c)(d e f)
 
 meaning `((abc) d e f)`.
 
-Assignment / equivalence can prove useful.
+Assignment / equivalence can prove useful, making it easier to specify the _roles_ of things.
 
 ```
 a: b(c)
