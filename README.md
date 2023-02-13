@@ -27,13 +27,13 @@ What OpenDDL lacks is a functional, or procedural, notation. I can't see a bette
 a(b c)
 ```
 
-Assignment / equivalence can prove useful.
+Assignment / equivalence can prove useful, and feel more natural than local names.
 
 ```
 a: b(c)
 ```
 
-And grouping things as ordered lists too.
+And grouping things as ordered lists feels basic too.
 
 ```
 [a b c]
