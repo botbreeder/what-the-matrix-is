@@ -27,7 +27,7 @@ What OpenDDL lacks is a functional, or procedural, notation. I can't see a bette
 a(b c)
 ```
 
-Assignments can prove useful.
+Assignment / equivalence can prove useful.
 
 ```
 a: b(c)
