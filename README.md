@@ -17,7 +17,7 @@ A given node has a 3D shape, and is related to (is located in/contains) several 
 
 Let's give a name to these nodes/relations. Let's call them [Narratives](https://github.com/botbreeder/mudbasic#narratives-as-reusable-blocks). Just replace the numbers by global `$names` and local `%names` from [OpenDDL](http://openddl.org/).
 
-It is also a choreographic languege. [Jolie](https://docs.jolie-lang.org/v1.10.x/introduction/index.html) is pretty.
+It is also a choreographic language. [Jolie](https://docs.jolie-lang.org/v1.10.x/introduction/index.html) is pretty.
 
 I need a syntax.
 
@@ -28,6 +28,8 @@ a(b c)(d e f)
 ```
 
 meaning `((abc) d e f)`.
+
+Roles of things can already be expressed through local names.
 
 Grouping things as ordered lists feels basic too, like `[a b c]`, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
 
