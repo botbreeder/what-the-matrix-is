@@ -20,3 +20,23 @@ Let's give a name to these nodes/relations. Let's call them [Narratives](https:/
 It is also a choreographic languege. [Jolie](https://docs.jolie-lang.org/v1.10.x/introduction/index.html) is pretty.
 
 I need a syntax.
+
+What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
+
+```
+a(b c)
+```
+
+Assignments could can prove useful.
+
+```
+a: b(c)
+```
+
+And grouping things as ordered lists too.
+
+```
+[a b c]
+```
+
+That's about it, on the syntax level. OpenDDL provides everything else.
