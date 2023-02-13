@@ -39,4 +39,4 @@ And grouping things as ordered lists too.
 [a b c]
 ```
 
-That's about it, on the syntax level. For now. OpenDDL provides almost everything else.
+That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
