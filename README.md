@@ -27,7 +27,7 @@ What OpenDDL lacks is a functional, or procedural, notation. I can't see a bette
 a(b c)
 ```
 
-Assignments could can prove useful.
+Assignments can prove useful.
 
 ```
 a: b(c)
@@ -39,4 +39,4 @@ And grouping things as ordered lists too.
 [a b c]
 ```
 
-That's about it, on the syntax level. OpenDDL provides everything else.
+That's about it, on the syntax level. For now. OpenDDL provides almost everything else.
