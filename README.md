@@ -27,7 +27,21 @@ What OpenDDL lacks is a functional, or procedural, notation. I can't see a bette
 a(b c)(d e f)
 ```
 
-meaning `((abc) d e f)`.
+meaning `((a b c) d e f)`.
+
+Relations need a head and a body.
+
+```
+Relation {
+    Expression %head {
+        a(b c)(d e f)
+    }
+    Expression %body {
+        g(b d e)
+        h(c f)
+    }
+}
+```
 
 Roles of things can already be expressed through local names.
 
