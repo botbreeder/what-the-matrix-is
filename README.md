@@ -35,13 +35,7 @@ Assignment / equivalence can prove useful.
 a: b(c)
 ```
 
-Grouping things as ordered lists feels basic too, although this one feels controversial. OpenDDL doesn't know single values. If you give an integer, you might as well give a thousand integers. So, it knows about arrays because it doesn't know anything else. Everything is an array. And it knows about "subarrays", obviously because 3D stuff is often regularly organized.
-
-Still, there's no way to distinguish a thing from a list of things. So if we're not going quantic, it needs a `List` type, and will benefit from a special (although familiar) notation.
-
-```
-[a b c]
-```
+Grouping things as ordered lists feels basic too, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
