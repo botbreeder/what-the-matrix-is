@@ -35,7 +35,7 @@ Assignment / equivalence can prove useful.
 a: b(c)
 ```
 
-Grouping things as ordered lists feels basic too, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
+Grouping things as ordered lists feels basic too, like `[a b c]`, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
