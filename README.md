@@ -24,10 +24,12 @@ I need a syntax.
 What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
 
 ```
-a(b c)
+a(b c)(d e f)
 ```
 
-Assignment / equivalence can prove useful, and feel more natural than local names.
+meaning `((abc) d e f)`.
+
+Assignment / equivalence can prove useful.
 
 ```
 a: b(c)
