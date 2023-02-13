@@ -37,5 +37,7 @@ a: b(c)
 
 Grouping things as ordered lists feels basic too, like `[a b c]`, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
 
+What _could_ be useful though, is the possibility to define **derived data types**, that is, data types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional contraints on an existing type.
+
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
