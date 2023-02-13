@@ -37,7 +37,7 @@ a: b(c)
 
 Grouping things as ordered lists feels basic too, although this one feels controversial. OpenDDL doesn't know single values. If you give an integer, you might as well give a thousand integers. So, it knows about arrays because it doesn't know anything else. Everything is an array. And it knows about "subarrays", obviously because 3D stuff is often regularly organized.
 
-Still, there's no way to distinguish between a thing and a list of things. So it needs a `List` type, and will benefit from a special (although familiar) notation.
+Still, there's no way to distinguish a thing from a list of things. So if we're not going quantum, it needs a `List` type, and will benefit from a special (although familiar) notation.
 
 ```
 [a b c]
