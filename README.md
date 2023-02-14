@@ -17,9 +17,7 @@ A given node has a 3D shape, and is related to (is located in/contains) several 
 
 Let's give a name to these nodes/relations. Let's call them [Narratives](https://github.com/botbreeder/mudbasic#narratives-as-reusable-blocks). Just replace the numbers by global `$names` and local `%names` from [OpenDDL](http://openddl.org/).
 
-It is also a choreographic language. [Jolie](https://docs.jolie-lang.org/v1.10.x/introduction/index.html) is pretty.
-
-I need a syntax.
+## syntax
 
 What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
 
@@ -99,11 +97,11 @@ Tensor {
 
 ```
 
-What could be useful is the possibility to define **derived data types**, that is, data types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional constraints on an existing type. 
+What could be useful is the possibility to define **derived data-types**, that is, data-types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional constraints on an existing type. 
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
-The list of available data-types can be reduced to:
+The list of available primitive data-types can be reduced to:
 ```
 boolean         bool        b
 number          num         n
