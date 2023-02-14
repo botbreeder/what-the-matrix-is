@@ -33,10 +33,14 @@ Relations need a head and a body.
 
 ```
 Relation {
-    Expression %head {
+
+    expr %head {
+
         a(b c)(d e f)
     }
-    Expression %body {
+    
+    expr %body {
+
         and(
             g(b d e)
             h(c f)
@@ -47,9 +51,65 @@ Relation {
 
 Roles of things can already be expressed through local names.
 
-Grouping things as ordered lists feels basic too, like `[a b c]`, but it might be the original sin. Thinking about it, OpenDDL as it is forces you to group values by type. It might be a good thing, in a [data-oriented design](https://www.dataorienteddesign.com/dodbook/).
+The `[a b c]` syntax seems appropriate for subarrays.
 
-What _could_ be useful though, is the possibility to define **derived data types**, that is, data types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional constraints on an existing type.
+```
+VertexArray {
+
+    float[3] {
+
+        [1.0, 2.0, 3.0],
+        [0.5, 0.0, 0.5],
+        [0.0, -1.0, 4.0],
+        [0.0, 1.0, -4.0]
+    }
+}
+```
+
+We can also expand this syntax to several dimensions.
+
+```
+
+Tensor {
+
+    float[3, 2] {
+
+        [
+            [1.0, 2.0],
+            [3.0, 4.0],
+            [5.0, 6.0]
+        ],
+        [
+            [1.1, 2.1],
+            [3.1, 4.1],
+            [5.1, 6.1]
+        ],
+        [
+            [1.2, 2.2],
+            [3.2, 4.2],
+            [5.2, 6.2]
+        ],
+        [
+            [1.3, 2.3],
+            [3.3, 4.3],
+            [5.3, 6.3]
+        ]
+    }
+}
+
+```
+
+What could be useful is the possibility to define **derived data types**, that is, data types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional constraints on an existing type. 
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
+
+The list of available data-types can be reduced to:
+```
+boolean         bool        b
+number          num         n
+string          str         s
+reference       ref         r
+type            type        t
+expression      expr        e
+```
 
