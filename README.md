@@ -100,6 +100,7 @@ number          num         n
 string          str         s
 reference       ref         r
 type            type        t
-javascript      js          j
 ```
+
+## Computation
 
