@@ -29,17 +29,6 @@ There's an exception though, in properties:
 
 ### Building on it
 
-#### Computation
-
-OpenDDL has no notion of computation, but its syntax makes it easy to create a new primitive data-type to hold source code in a language like Javascript. To respect the comma-separated style of other primitive data-types, the `js` data-type would contain a comma-separated list of expressions, that may or may not have side-effects.
-
-```
-js {
-    set('foo', 5 + fetch('%v')),
-    console.log('ok')
-}
-```
-
 #### Subarrays
 
 The `[a b c]` syntax seems appropriate for subarrays.
