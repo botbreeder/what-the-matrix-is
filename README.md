@@ -37,8 +37,10 @@ Relation {
         a(b c)(d e f)
     }
     Expression %body {
-        g(b d e)
-        h(c f)
+        and(
+            g(b d e)
+            h(c f)
+        )
     }
 }
 ```
