@@ -104,5 +104,5 @@ type            type        t
 
 ## Computation
 
-As in ECS architectures, systems react to what's inside structures. They react to values, substructures and local names. But they only work when there's a change, to produce a stable value.
+As in ECS architectures, systems react to what's inside structures. They react to values, substructures and local names. But they only work when there's a change, to produce a new stable value.
 
