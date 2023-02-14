@@ -19,7 +19,7 @@ Let's give a name to these nodes/relations. Let's call them [Narratives](https:/
 
 ## Syntax
 
-I like OpenDDL's way to emphasize the type of everything. Every value has to be written in its type-container, even simple things like `string { "foo" }`.
+I like OpenDDL's way to emphasize the type of everything. Every value has to be written in its type-container, even simple things like `string{"foo"}`.
 
 > Each unit of data in an OpenDDL file has an explicitly specified type, and this eliminates ambiguity and fragile inferencing methods that can impact the integrity of the data.
 
