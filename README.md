@@ -17,7 +17,7 @@ A given node has a 3D shape, and is related to (is located in/contains) several 
 
 Let's give a name to these nodes/relations. Let's call them [Narratives](https://github.com/botbreeder/mudbasic#narratives-as-reusable-blocks). Just replace the numbers by global `$names` and local `%names` from [OpenDDL](http://openddl.org/).
 
-## syntax
+## Syntax
 
 What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
 
