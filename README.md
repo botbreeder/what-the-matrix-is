@@ -29,26 +29,18 @@ There's an exception though, in properties:
 
 ### Building on it
 
-What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
+#### Computation
+
+OpenDDL has no notion of computation, but its syntax makes it easy to create a new primitive data-type to hold source code in a language like Javascript. To respect the comma-separated style of other primitive data-types, the `js` data-type would contain a comma-separated list of expressions, that may or may not have side-effects.
 
 ```
-a(b c)(d e f)
-```
-
-meaning `((a b c) d e f)`.
-
-Here is an example of relation, with a head and a body.
-
-```
-Relation {
-
-    expr %head { a(b c)(d e f) }
-    
-    expr %body { g(b d e), h(c f) }
+js {
+    set('foo', 5 + fetch('%v')),
+    console.log('ok')
 }
 ```
 
-Roles of things can already be expressed through local names.
+#### Subarrays
 
 The `[a b c]` syntax seems appropriate for subarrays.
 
@@ -64,6 +56,8 @@ VertexArray {
     }
 }
 ```
+
+#### Tensors
 
 We can also expand this syntax to several dimensions.
 
@@ -98,7 +92,15 @@ Tensor {
 
 ```
 
-What could be useful is the possibility to define **derived data-types**, that is, data-types that are syntactically expressed as a primitive type, but have other names. For example, an `email-address` data-type could be derived from the `string` data-type. The derived data-type just puts additional constraints on an existing type. 
+#### Derivative data-types
+
+What could be useful is the possibility to define **derivative data-types**, that is, data-types that are syntactically expressed as a primitive type, but have other names. For example, an `EmailAddress` data-type could be built from the primitive `string` data-type. The derivative data-type puts additional constraints on an existing type, and makes its meaning explicit.
+
+```
+EmailAddress:string { "github@gmail.com" }
+```
+
+#### Primitive data-types
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
@@ -109,6 +111,6 @@ number          num         n
 string          str         s
 reference       ref         r
 type            type        t
-expression      expr        e
+javascript      js          j
 ```
 
