@@ -19,6 +19,16 @@ Let's give a name to these nodes/relations. Let's call them [Narratives](https:/
 
 ## Syntax
 
+I like OpenDDL's way to emphasize the type of everything. Every value has to be written in its type-container, even simple things like `string { "foo" }`.
+
+> Each unit of data in an OpenDDL file has an explicitly specified type, and this eliminates ambiguity and fragile inferencing methods that can impact the integrity of the data.
+
+There's an exception though, in properties:
+
+> The type of the property’s value must be specified by some external source of information such as a schema or the implementation of the derivative format.
+
+### Building on it
+
 What OpenDDL lacks is a functional, or procedural, notation. I can't see a better candidate than prefixed s-expressions.
 
 ```
@@ -27,23 +37,14 @@ a(b c)(d e f)
 
 meaning `((a b c) d e f)`.
 
-Relations need a head and a body.
+Here is an example of relation, with a head and a body.
 
 ```
 Relation {
 
-    expr %head {
-
-        a(b c)(d e f)
-    }
+    expr %head { a(b c)(d e f) }
     
-    expr %body {
-
-        and(
-            g(b d e)
-            h(c f)
-        )
-    }
+    expr %body { g(b d e), h(c f) }
 }
 ```
 
