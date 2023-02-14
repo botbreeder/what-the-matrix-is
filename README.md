@@ -104,4 +104,4 @@ type            type        t
 
 ## Computation
 
-As in ECS, systems react to what's inside structures.
+As in ECS architectures, systems react to what's inside structures.
