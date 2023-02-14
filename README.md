@@ -100,7 +100,10 @@ number          num         n
 string          str         s
 reference       ref         r
 type            type        t
+atom            atom        a
 ```
+
+where `atom` can be an identifier or a name, including the initial `$` or `%` as needed.
 
 ## Computation
 
