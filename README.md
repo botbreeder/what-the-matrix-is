@@ -107,7 +107,7 @@ where `atom` can be an identifier or a name, including the initial `$` or `%` as
 
 ## Computation
 
-As in ECS architectures, systems react to what's inside structures. They can react to values, substructures, local names, anything. But they only work when there's a change, to produce a new stable value. When one of the components of the structure changes, all systems _interested in this component_ will recalculate their value. Registering can be autodone through proxies.
+As in ECS architectures, systems react to what's inside structures. They can react to values, substructures, local names, anything. But they only work when there's a change, to produce a new stable value. When one of the components of the structure changes, all systems _interested in this component_ will recalculate their value. Registering can be autodone through proxies watching.
 
 In case of natural language values, chatbot techniques can be used to produce a textual output value, along with relevant numerical values produced from classical math expressions. Textual and numerical merge in composite formulae. Searching is just a function.
 
