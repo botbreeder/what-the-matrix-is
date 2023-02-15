@@ -113,7 +113,7 @@ In case of natural language values, [chatbot](https://www.rivescript.com/docs/tu
 
 ### Semantic camera
 
-while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language.
+while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language. Of course, the right way to read it, is to listen to its changes.
 
 `$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & Fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed. It just needs a good path solver, in an environment that doesn't know the parent-child relation.
 
