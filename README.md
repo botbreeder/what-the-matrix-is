@@ -129,7 +129,7 @@ Now, a path is like
 a(b c), d(e f)
 ```
 
-where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path.
+where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path. From there, the rest is host language.
 
 ### Object entities
 
