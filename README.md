@@ -121,5 +121,5 @@ The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.tx
 
 ### Object entities
 
-Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together.
+Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev necessity, a way to author stuff.
 
