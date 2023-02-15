@@ -126,7 +126,7 @@ In ps-exp `a(b c)` is like `(a b c)` in s-exp. In ps-exp `a(b c)(d e f)` is like
 Now, a path is like
 
 ```
-a(b c), d(e f)
+a(b c) d(e f)
 ```
 
 where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path. From there, the rest is host language.
