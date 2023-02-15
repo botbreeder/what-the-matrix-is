@@ -121,5 +121,5 @@ The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.tx
 
 ### Object entities
 
-3D objects need models and init functions. It's like OO, but it's about entities of an ECS architecture.
+Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D.
 
