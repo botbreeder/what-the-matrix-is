@@ -119,6 +119,18 @@ while feasible, I would recommend against a semantic camera that would just spit
 
 In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions. So, a path is simply a sequence of selecting functions, each of which take 1 entity as input, and output 0+ entities. And if we want to be complete, these functions not only return the next selection, but also the (potentially modified) list of remaining selectors in the path. They take as input not only a node, but also the current path.
 
+If we admit that the selecting functions of a path are just functions, you can call them by name. A simple function-friendly syntax, like the **prefixed s-expression** syntax, is enough to express the path.
+
+In ps-exp `a(b c)` is like `(a b c)` in s-exp. In ps-exp `a(b c)(d e f)` is like `((a b c) d e f)` in s-exp.
+
+Now, a path is like
+
+```
+a(b c), d(e f)
+```
+
+where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
