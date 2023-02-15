@@ -131,7 +131,7 @@ a(b c) d(e f)
 
 where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path. From there, the rest is host language.
 
-This is where we plug our event listeners in. But we also need to react to appearing and disappearing nodes. Like [D3js](https://d3js.org/), we have selecting functions dedicated to **enter**ing data and **exit**ing data.
+This is where we plug our event listeners in. But we also need to react to appearing and disappearing nodes. That's why like [D3js](https://d3js.org/), we have selecting functions that can catch **enter**ing data and **exit**ing data.
 
 ### Object entities
 
