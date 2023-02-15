@@ -117,5 +117,5 @@ while feasible, I would recommend against a semantic camera that would just spit
 
 `$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). Or, we use a mainstream batteries-included solution, like XML, and the relevant tools already available. Somehow ([XSLT](https://en.wikipedia.org/wiki/XSLT)? Spooky.)
 
-Objects need models, or init functions.
+3D Objects need models, or init functions. It's like OO, but it's about entities of an ECS architecture.
 
