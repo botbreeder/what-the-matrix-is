@@ -81,9 +81,9 @@ Tensor {
 
 ```
 
-#### Derivative data-types
+#### Specific data-types
 
-What could be useful is the possibility to define **derivative data-types**, that is, data-types that are syntactically expressed as a primitive type, but have other names. For example, an `EmailAddress` data-type could be built from the primitive `string` data-type. The derivative data-type puts additional constraints on an existing type, and makes its meaning explicit.
+What could be useful is the possibility to define **specific** data-types, that is, a data-type that is syntactically expressed as an existing type, but have another name. For example, an `EmailAddress` data-type could be built from the primitive `string` data-type. The specific data-type puts additional constraints on an existing type, and makes its meaning explicit.
 
 ```
 EmailAddress:string { "github@gmail.com" }
