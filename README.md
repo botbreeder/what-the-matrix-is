@@ -117,7 +117,7 @@ while feasible, I would recommend against a semantic camera that would just spit
 
 `$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed. It just needs a good path syntax, in an environment that doesn't know the parent-child relation.
 
-In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions. So, a path is simply a sequence of selecting functions, each of which take 1 entity as input, and output 0+ entities. And if we want to be complete, these functions not only return the next selection, but also the (potentially modified) list of the remaining selectors in the path.
+In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions. So, a path is simply a sequence of selecting functions, each of which take 1 entity as input, and output 0+ entities. And if we want to be complete, these functions not only return the next selection, but also the (potentially modified) list of the remaining selectors in the path. They take as input not only a node, but also the remaining path.
 
 ### Object entities
 
