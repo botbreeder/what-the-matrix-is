@@ -111,4 +111,11 @@ As in [ECS](https://en.wikipedia.org/wiki/Entity_component_system) architectures
 
 In case of natural language values, [chatbot](https://www.rivescript.com/docs/tutorial) & [interactive fiction](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md) techniques can be used to produce a textual output value, along with relevant numerical values produced from classical math expressions. Textual and numerical merge in composite formulae. Searching is just a function. Values are often texts about (giving meaning to) explicit values of any type. Values are a structure's components. Loop.
 
+### Semantic camera
+
+while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language.
+
+`$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). 
+
+
 
