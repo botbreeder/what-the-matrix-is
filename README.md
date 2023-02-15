@@ -117,6 +117,8 @@ while feasible, I would recommend against a semantic camera that would just spit
 
 `$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed. It just needs a good path syntax, in an environment that doesn't know the parent-child relation.
 
+In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
