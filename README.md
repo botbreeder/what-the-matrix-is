@@ -81,19 +81,19 @@ Tensor {
 
 ```
 
-#### Specific data-types
+#### Specific data types
 
-What could be useful is the possibility to define **specific** data-types, that is, a data-type that is syntactically expressed as an existing type, but have another name. For example, an `EmailAddress` data-type could be built from the primitive `string` data-type. The specific data-type puts additional constraints on an existing type, and makes its meaning explicit.
+What could be useful is the possibility to define **specific** data types, that is, a data type that is syntactically expressed as an existing type, but has another name. For example, an `EmailAddress` data type could be built from the primitive `string` data type. The specific data type puts additional constraints on an existing type, and makes its meaning explicit.
 
 ```
 EmailAddress:string { "github@gmail.com" }
 ```
 
-#### Primitive data-types
+#### Primitive data types
 
 That's about it, on the syntax level. For now. OpenDDL provides almost everything else. We stay very declarative.
 
-The list of available primitive data-types can be reduced to:
+The list of available primitive data types can be reduced to:
 ```
 boolean         bool        b
 number          num         n
