@@ -119,5 +119,7 @@ while feasible, I would recommend against a semantic camera that would just spit
 
 The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed.
 
-3D Objects need models and init functions. It's like OO, but it's about entities of an ECS architecture.
+### Object entities
+
+3D objects need models and init functions. It's like OO, but it's about entities of an ECS architecture.
 
