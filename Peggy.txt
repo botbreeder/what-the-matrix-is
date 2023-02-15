@@ -1,0 +1,608 @@
+{
+    function correctDim(dim, content, star) {
+    
+    	let nextDim = dim.slice(1);
+        
+    	for (let c of content) {
+        	if (!star && c.state) error("Unexpected data state.");
+        
+        	if (c.value.length != dim[0]) return false
+            
+        	if (dim.length > 1) {
+            	if (c.type != "subarray") return false;
+                if (!correctDim(nextDim, c.value)) return false;
+        	}
+        }
+		return true;
+    }
+}
+
+
+Document
+= _ s:Structure* { return s; }
+
+
+_
+= [ \t\r\n]*
+
+
+Structure
+= s:PrimitiveStructure _ { return s; }
+/ s:DerivedStructure _ { return s; }
+
+
+PrimitiveStructure
+= s:BooleanStructure _ { return s; }
+/ s:NumberStructure _ { return s; }
+/ s:StringStructure _ { return s; }
+/ s:ReferenceStructure _ { return s; }
+/ s:TypeStructure _ { return s; }
+/ s:WordStructure _ { return s; }
+
+
+Type
+= BooleanType
+/ NumberType
+/ StringType
+/ ReferenceType
+/ TypeType
+/ WordType
+
+
+// derived
+
+
+DerivedType
+= Identifier
+
+
+DerivedValue
+= Structure
+
+
+DerivedStructure
+= spec:(Identifier _ ':' _)? type:DerivedType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:DerivedStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "derived",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:DerivedType _ name:Name? _ properties:Properties? _ '{' _ content:DerivedStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "derived",
+        name,
+        properties,
+        content
+    };
+}
+
+
+DerivedStructureContent
+= f:DerivedValue _ r:(',' _ DerivedValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+DerivedStructureSubarray
+= f:DerivedStructureSubarrayContent _ r:(',' _ DerivedStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+DerivedStructureSubarrayContent
+= DerivedValue
+/ s:Identifier? _ '[' _ v:DerivedStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+
+
+
+// boolean
+
+
+BooleanType
+= ("boolean" / "bool" / "b") { return "boolean"; }
+
+
+BooleanValue
+= "true" _ { return { type: "boolean", value: true, format: "literal" }; }
+/ "false" _ { return { type: "boolean", value: false, format: "literal" }; }
+
+
+BooleanStructure
+= spec:(Identifier _ ':' _)? type:BooleanType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:BooleanStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:BooleanType _ name:Name? _ properties:Properties? _ '{' _ content:BooleanStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+BooleanStructureContent
+= f:BooleanValue _ r:(',' _ BooleanValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+BooleanStructureSubarray
+= f:BooleanStructureSubarrayContent _ r:(',' _ BooleanStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+BooleanStructureSubarrayContent
+= BooleanValue
+/ s:Identifier? _ '[' _ v:BooleanStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+
+// number
+
+
+JSON_number "number"
+= JSON_minus? JSON_int JSON_frac? JSON_exp? { return parseFloat(text()); }
+
+JSON_decimal_point
+= "."
+
+JSON_digit1_9
+= [1-9]
+
+JSON_e
+= [eE]
+
+JSON_exp
+= JSON_e (JSON_minus / JSON_plus)? JSON_DIGIT+
+
+JSON_frac
+= JSON_decimal_point JSON_DIGIT+
+
+JSON_int
+= JSON_zero / (JSON_digit1_9 JSON_DIGIT*)
+
+JSON_minus
+= "-"
+
+JSON_plus
+= "+"
+
+JSON_zero
+= "0"
+
+JSON_DIGIT
+= [0-9]
+
+
+NumberType
+= ("number" / "num" / "n") { return "number"; }
+
+
+NumberValue
+= v:JSON_number { return { type: "number", value: v, format: "literal" }; }
+
+
+NumberStructure
+= spec:(Identifier _ ':' _)? type:NumberType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:NumberStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:NumberType _ name:Name? _ properties:Properties? _ '{' _ content:NumberStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+NumberStructureContent
+= f:NumberValue _ r:(',' _ NumberValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+NumberStructureSubarray
+= f:NumberStructureSubarrayContent _ r:(',' _ NumberStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+NumberStructureSubarrayContent
+= NumberValue
+/ s:Identifier? _ '[' _ v:NumberStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+// string
+
+
+JSON_string "string"
+= JSON_quotation_mark chars:JSON_char* JSON_quotation_mark { return chars.join(""); }
+
+JSON_char
+= JSON_unescaped
+/ JSON_escape sequence:(
+    '"'
+    / "\\"
+    / "/"
+    / "b" { return "\b"; }
+    / "f" { return "\f"; }
+    / "n" { return "\n"; }
+    / "r" { return "\r"; }
+    / "t" { return "\t"; }
+    / "u" JSON_digits:$(JSON_HEXDIG JSON_HEXDIG JSON_HEXDIG JSON_HEXDIG) {
+        return String.fromCharCode(parseInt(digits, 16));
+    }
+)
+{ return sequence; }
+
+JSON_escape
+= "\\"
+
+JSON_quotation_mark
+= '"'
+
+JSON_unescaped
+= [^\0-\x1F\x22\x5C]
+
+JSON_HEXDIG = [0-9a-f]i
+
+
+StringType
+= ("string" / "str" / "s") { return "string"; }
+
+
+StringValue
+= v:JSON_string { return { type: "string", value: v, format: "literal" }; }
+
+
+StringStructure
+= spec:(Identifier _ ':' _)? type:StringType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:StringStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:StringType _ name:Name? _ properties:Properties? _ '{' _ content:StringStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+StringStructureContent
+= f:StringValue _ r:(',' _ StringValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+StringStructureSubarray
+= f:StringStructureSubarrayContent _ r:(',' _ StringStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+StringStructureSubarrayContent
+= StringValue
+/ s:Identifier? _ '[' _ v:StringStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+
+// reference
+
+
+ReferenceType
+= ("reference" / "ref" / "r") { return "reference"; }
+
+
+ReferenceValue
+= fn:Name _ rn:LocalName* _
+{
+	return { type: "reference", value: [fn].concat(rn), format: "literal" };
+}
+
+
+ReferenceStructure
+= spec:(Identifier _ ':' _)? type:ReferenceType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:ReferenceStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:ReferenceType _ name:Name? _ properties:Properties? _ '{' _ content:ReferenceStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+ReferenceStructureContent
+= f:ReferenceValue _ r:(',' _ ReferenceValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+ReferenceStructureSubarray
+= f:ReferenceStructureSubarrayContent _ r:(',' _ ReferenceStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+ReferenceStructureSubarrayContent
+= ReferenceValue
+/ s:Identifier? _ '[' _ v:ReferenceStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+// type
+
+
+TypeType
+= ("type" / "t") { return "type"; }
+
+
+TypeValue
+= t:Type { return { type: "type", value: t, format: "literal" }; }
+
+
+TypeStructure
+= spec:(Identifier _ ':' _)? type:TypeType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:TypeStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:TypeType _ name:Name? _ properties:Properties? _ '{' _ content:TypeStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+TypeStructureContent
+= f:TypeValue _ r:(',' _ TypeValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+TypeStructureSubarray
+= f:TypeStructureSubarrayContent _ r:(',' _ TypeStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+TypeStructureSubarrayContent
+= TypeValue
+/ s:Identifier? _ '[' _ v:TypeStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+// word
+
+
+WordType
+= ("word" / "w") { return "word"; }
+
+
+WordValue
+= w:(Identifier / Name) _ { return { type: "word", value: w, format: "literal" }; }
+
+
+WordStructure
+= spec:(Identifier _ ':' _)? type:WordType _ dim:Dimensions star:Star? _ name:Name? _ properties:Properties? _ '{' _ content:WordStructureSubarray _ '}' _
+{
+	if (!correctDim(dim, content, star)) error("Wrong subarray dimensions.");
+    
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        dimensions: dim,
+        name,
+        properties,
+        content
+    };
+}
+/ spec:(Identifier _ ':' _)? type:WordType _ name:Name? _ properties:Properties? _ '{' _ content:WordStructureContent _ '}' _
+{
+	return {
+    	specific: spec ? spec[0] : null,
+    	type,
+        format: "primitive",
+        name,
+        properties,
+        content
+    };
+}
+
+
+WordStructureContent
+= f:WordValue _ r:(',' _ WordValue _)*
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+WordStructureSubarray
+= f:WordStructureSubarrayContent _ r:(',' _ WordStructureSubarrayContent _)* _
+{
+	return [f].concat(r.map(i => i[2]));
+}
+
+
+WordStructureSubarrayContent
+= WordValue
+/ s:Identifier? _ '[' _ v:WordStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
+
+
+
+
+
+
+// etc
+
+
+Identifier
+= [a-zA-Z_] [a-zA-Z0-9_]* { return text(); }
+
+
+Name
+= GlobalName
+/ LocalName
+
+
+GlobalName
+= '$' Identifier _ { return text().trim(); }
+
+
+LocalName
+= '%' Identifier _ { return text().trim(); }
+
+
+Properties
+= '(' _ fp:Property _ rp:(',' _ Property)* _ ')' _
+{
+	return [fp].concat(rp.map(i => i[2]));
+}
+
+
+Property
+= id:Identifier _ '=' _ v:PropertyValue
+{
+	return {
+    	identifier: id,
+        value: v
+    };
+}
+/ id:Identifier _
+{
+	return {
+    	identifier: id,
+        value: { type: "boolean", value: true }
+    }
+}
+
+
+PropertyValue
+= BooleanValue
+/ NumberValue
+/ StringValue
+/ ReferenceValue
+
+
+Dimensions
+= '[' _ fd:[0-9]+ _ rd:(',' _ [0-9]+ _)* _ ']' _
+{
+	return [parseInt(fd.join(''))].concat(rd.map(i => parseInt(i[2].join(''))));
+}
+
+
+Star
+= '*'
+
+
+
+
+
+
+
+
+
+
+
+
