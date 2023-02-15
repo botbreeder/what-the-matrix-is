@@ -131,6 +131,8 @@ a(b c) d(e f)
 
 where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path. From there, the rest is host language.
 
+This is where we plug our event listeners in. But we also need to react to appearing and disappearing nodes. Like [D3js](https://d3js.org/), we have selecting functions dedicated to **enter**ing data and **exit**ing data.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
