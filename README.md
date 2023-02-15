@@ -115,9 +115,7 @@ In case of natural language values, [chatbot](https://www.rivescript.com/docs/tu
 
 while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language.
 
-`$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). Or, we use a mainstream batteries-included solution, like XML, and the relevant tools already available. Somehow ([XSLT](https://en.wikipedia.org/wiki/XSLT)? Spooky.)
-
-The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed.
+`$`/`%` chains can be seen as a CSS derivative. You select groups through selectors. But it needs a lot more power (we're going 3D & fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be tersed if needed. It just needs a good path syntax.
 
 ### Object entities
 
