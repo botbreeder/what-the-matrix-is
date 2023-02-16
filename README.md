@@ -156,6 +156,8 @@ Then we have the following filters (below, `?` is one of `=` `!=` `>=` `<=` `>` 
 
 Then we can have user-defined functions, written in the host language and registered properly. This is where you'd make complex tests on values, and so on.
 
+Like, `ref{ $Ferrari %model where(%year < 1990) }`
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
