@@ -164,7 +164,11 @@ OpenDDL's global and local names are awesome. Global `$names` are unique, end of
 
 Selection rules observe. When triggered, they launch formulae. The formulae feed the accumulations.
 
-Still needs docs though.
+Still needs doc though.
+
+### Relations
+
+Relations are mainly natural language.
 
 ### Object entities
 
