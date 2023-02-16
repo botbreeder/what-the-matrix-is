@@ -154,6 +154,8 @@ Then we have the following filters (below, `?` is one of `=` `!=` `>=` `<=` `>` 
 - `exit(selector)` triggers once for each disappearing item.
 - `select(function)` calls a user-defined function on the current selection.
 
+Careful, you can't have a `div` selector, you have to put it inside a `type()` filter.
+
 Then we can have user-defined functions, written in the host language and registered properly. This is where you'd make complex tests on values, and so on.
 
 Like, `ref{ $Ferrari %model where(%year < 1990) }`
