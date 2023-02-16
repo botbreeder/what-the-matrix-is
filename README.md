@@ -125,7 +125,7 @@ We'll follow an approach similar to that of [CSS Selectors](https://www.w3school
 
 First the basic syntax:
 
-- We have global `$names` and local `%names`, which we can use just like CSS uses IDs.
+- We have global `$names` and local `%names`, which we can use just like CSS uses IDs and classes.
 - There's an "everything here" selector `*`.
 - The CSS "and" is the comma.
 - Juxtaposition (space) means "all inside" or "under here".
