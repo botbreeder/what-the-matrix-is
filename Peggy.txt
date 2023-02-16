@@ -18,6 +18,9 @@
 }
 
 
+// start
+
+
 Document
 = _ s:Structure* { return s; }
 
@@ -40,7 +43,7 @@ PrimitiveStructure
 / s:WordStructure _ { return s; }
 
 
-Type
+PrimitiveType
 = BooleanType
 / NumberType
 / StringType
@@ -107,9 +110,6 @@ DerivedStructureSubarrayContent
 / s:Identifier? _ '[' _ v:DerivedStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
 
 
-
-
-
 // boolean
 
 
@@ -169,39 +169,48 @@ BooleanStructureSubarrayContent
 / s:Identifier? _ '[' _ v:BooleanStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
 
 
-
 // number
 
 
 JSON_number "number"
 = JSON_minus? JSON_int JSON_frac? JSON_exp? { return parseFloat(text()); }
 
+
 JSON_decimal_point
 = "."
+
 
 JSON_digit1_9
 = [1-9]
 
+
 JSON_e
 = [eE]
+
 
 JSON_exp
 = JSON_e (JSON_minus / JSON_plus)? JSON_DIGIT+
 
+
 JSON_frac
 = JSON_decimal_point JSON_DIGIT+
+
 
 JSON_int
 = JSON_zero / (JSON_digit1_9 JSON_DIGIT*)
 
+
 JSON_minus
 = "-"
+
 
 JSON_plus
 = "+"
 
+
 JSON_zero
 = "0"
+
 
 JSON_DIGIT
 = [0-9]
@@ -268,6 +277,7 @@ NumberStructureSubarrayContent
 JSON_string "string"
 = JSON_quotation_mark chars:JSON_char* JSON_quotation_mark { return chars.join(""); }
 
+
 JSON_char
 = JSON_unescaped
 / JSON_escape sequence:(
@@ -285,14 +295,18 @@ JSON_char
 )
 { return sequence; }
 
+
 JSON_escape
 = "\\"
+
 
 JSON_quotation_mark
 = '"'
 
+
 JSON_unescaped
 = [^\0-\x1F\x22\x5C]
+
 
 JSON_HEXDIG = [0-9a-f]i
 
@@ -352,7 +366,6 @@ StringStructureSubarrayContent
 / s:Identifier? _ '[' _ v:StringStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
 
 
-
 // reference
 
 
@@ -361,9 +374,9 @@ ReferenceType
 
 
 ReferenceValue
-= fn:Name _ rn:LocalName* _
+= s:Selector _
 {
-	return { type: "reference", value: [fn].concat(rn), format: "literal" };
+	return { type: "reference", value: s, format: "literal" };
 }
 
 
@@ -422,7 +435,11 @@ TypeType
 
 
 TypeValue
-= t:Type { return { type: "type", value: t, format: "literal" }; }
+= spec:(Identifier _ ':' _)? t:Identifier
+{
+	let f = ["b", "bool", "boolean", "n", "num", "number", "s", "str", "string", "r", "ref", "reference", "t", "type", "w", "word"].includes(t) ? "primitive" : "derived";
+	return { type: "type", value: { specific: spec ? spec[0] : null, type: t, format: f }, format: "literal" };
+}
 
 
 TypeStructure
@@ -530,10 +547,6 @@ WordStructureSubarrayContent
 / s:Identifier? _ '[' _ v:WordStructureSubarray _ ']' _ { return { type: "subarray", value: v, state: s }; }
 
 
-
-
-
-
 // etc
 
 
@@ -551,7 +564,7 @@ GlobalName
 
 
 LocalName
-= '%' Identifier _ { return text().trim(); }
+= "%" Identifier _ { return text().trim(); }
 
 
 Properties
@@ -594,6 +607,103 @@ Dimensions
 
 Star
 = '*'
+
+
+Selector
+= fs:(AbsoluteSelector / RelativeSelector) rs:RelativeSelector*
+{
+	return [fs].concat(rs);
+}
+
+
+AbsoluteSelector
+= s:GlobalName _ { return { type: "selector", selector: "GlobalName", value: s }; }
+
+
+RelativeSelector
+= s:LocalName _ { return { type: "selector", selector: "LocalName", value: s }; }
+/ s:EverythingSelector _ { return { type: "selector", selector: "Everything" }; }
+/ s:DirectChildSelector _ { return { type: "selector", selector: "DirectChild" }; }
+/ s:WhatLinksHere _ { return { type: "selector", selector: "WhatLinksHere" }; }
+/ s:PropertyExistsSelector _ { return { type: "selector", selector: "PropertyExists", property: s }; }
+/ s:PropertyCompareSelector _ { return { type: "selector", selector: "PropertyCompare", property: s.property, comparison: s.comparison, value: s.value }; }
+/ s:TypeSelector _ { return { type: "selector", selector: "Type", value: s.value }; }
+/ s:NotSelector _ { return { type: "selector", selector: "Not", value: s }; }
+/ s:WhereSelector _ { return { type: "selector", selector: "Where", name: s.name, comparison: s.comparison, value: s.value }; }
+/ s:WhereSomeSelector _ { return { type: "selector", selector: "WhereSome", name: s.name, comparison: s.comparison, value: s.value }; }
+/ s:WhereNoneSelector _ { return { type: "selector", selector: "WhereNone", name: s.name, comparison: s.comparison, value: s.value }; }
+/ s:EnterSelector _ { return { type: "selector", selector: "Enter", value: s }; }
+/ s:UpdateSelector _ { return { type: "selector", selector: "Update", value: s }; }
+/ s:ExitSelector _ { return { type: "selector", selector: "Exit", value: s }; }
+/ s:CallSelector _ { return { type: "selector", selector: "Call", value: s }; }
+
+
+EverythingSelector
+= '*'
+
+
+DirectChildSelector
+= '>'
+
+
+WhatLinksHere
+= '<'
+
+
+PropertyExistsSelector
+= '[' _ i:Identifier _ ']' _ { return i; }
+
+
+ComparisonOperator
+= '=' / '!=' / '>=' / '<=' / '>' / '<' / '^=' / '$=' / '*='
+
+
+PropertyCompareSelector
+= '[' _ i:Identifier _ o:ComparisonOperator _ v:PropertyValue _ ']' _ { return { property: i, comparison: o, value: v }; }
+
+
+TypeSelector
+= "type" _ '(' _ t:TypeValue _ ')' _ { return t; }
+
+
+NotSelector
+= "not" _ '(' _ s:RelativeSelector _ ')' _ { return s; }
+
+
+WhereSelector
+= "where" _ '(' _ n:LocalName _ o:ComparisonOperator _ v:PropertyValue _ ')' _ { return { name: n, comparison: o, value: v }; }
+
+
+WhereSomeSelector
+= "wheresome" _ '(' _ n:LocalName _ o:ComparisonOperator _ v:PropertyValue _ ')' _ { return { name: n, comparison: o, value: v }; }
+
+
+WhereNoneSelector
+= "wherenone" _ '(' _ n:LocalName _ o:ComparisonOperator _ v:PropertyValue _ ')' _ { return { name: n, comparison: o, value: v }; }
+
+
+EnterSelector
+= "enter" _ '(' _ s:RelativeSelector _ ')' _ { return s; }
+
+
+UpdateSelector
+= "update" _ '(' _ s:RelativeSelector _ ')' _ { return s; }
+
+
+ExitSelector
+= "exit" _ '(' _ s:RelativeSelector _ ')' _ { return s; }
+
+
+CallSelector
+= "select" _ '(' _ s:Identifier _ ')' _ { return s; }
+
+
+
+
+
+
+
+
 
 
 
