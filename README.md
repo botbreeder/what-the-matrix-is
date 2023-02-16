@@ -113,25 +113,48 @@ In case of natural language values, [chatbot](https://www.rivescript.com/docs/tu
 
 ### Semantic camera
 
-while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language. Of course, the right way to read it, is to listen to its changes.
+while feasible, I would recommend against a semantic camera that would just spit out a text-adventure-like monolithic string. It has to produce a changing network of values (most of which are refs) linked by natural language. The right way to read it is to listen to its changes.
 
-In the original OpenDDL, `$`/`%` chains (references) can be seen as a CSS derivative. You select nodes through selectors. But it needs a lot more power (we're going 3D & Fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be terse if needed. It just needs a good path syntax and solver, in an environment that doesn't know the parent-child relation.
+### Selectors
 
-In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions. So, a path is simply a sequence of selecting functions, each of which take 1 entity as input, and output 0+ entities. And if we want to be complete, these functions not only return a selection of nodes, but also a (potentially modified) list of remaining selectors in the path. They take as input not only a node, but also the current path.
+In the original OpenDDL, `$`/`%` chains (references) can be seen as a CSS derivative. You select nodes through selectors. But it needs more power (we're going 3D & Fiction). The [syntax](https://github.com/botbreeder/what-the-matrix-is/blob/main/Peggy.txt) above can be terse if needed. It just needs a good path syntax and solver.
 
-If we admit that the selecting functions of a path are just functions, we can call them by name. Then, a simple function-friendly syntax, like the **prefixed s-expression** syntax, is enough to express the path.
+In fact path is everything. If you take a typical file-system syntax for example, like `../stuff/foo.txt`, you'll see that the names are just constants. A path is fundamentally a sequence of selectors, that from one node lead you to other nodes. These selectors might be constants, but in our case, we'd rather use functions. So, a path is simply a sequence of selecting functions, each of which take 1 entity as input, and output 0+ entities.
 
-In ps-exp `a(b c)` is like `(a b c)` in s-exp. In ps-exp `a(b c)(d e f)` is like `((a b c) d e f)` in s-exp.
+We'll follow an approach similar to that of [CSS Selectors](https://www.w3schools.com/cssref/css_selectors.php), while staying compatible with `$`/`%` chains.
 
-Now, a path is like
+First the basic syntax:
 
-```
-a(b c) d(e f)
-```
+- We have global `$names` and local `%names`, which we can use just like CSS uses IDs.
+- There's an "everything here" selector `*`.
+- The CSS "and" is the comma.
+- Juxtaposition (space) means "all inside" or "under here".
+- `>` means immediately inside (direct child).
+- `<` means immediate parents (what links here).
+- `[prop]` means "having a (possibly empty) property called 'prop'." (can be used as CSS classes)
+- `[prop = value]` means those where prop = value.
+- `[prop != value]` means those where prop != value.
+- `[prop >= value]` means those where prop >= value.
+- `[prop <= value]` means those where prop <= value.
+- `[prop > value]` means those where prop > value.
+- `[prop < value]` means those where prop < value.
+- `[prop ^= value]` means those where prop begins with value.
+- `[prop $= value]` means those where prop ends with value.
+- `[prop *= value]` means those where prop contains value.
 
-where `a` and `d` refer to selecting functions, and `b` `c` `e` `f` are additional parameters for these functions, conveying arguments they receive along with the spreading node and the remaining path. From there, the rest is host language.
+Then we have the following filters (below, `?` is one of `=` `!=` `>=` `<=` `>` `<` `^=` `$=` `*=`):
 
-This is where we plug our event listeners in. But we also need to react to appearing and disappearing nodes. That's why like [D3js](https://d3js.org/), we have selecting functions that can catch **enter**ing data and **exit**ing data.
+- `type(type)` keep only structures of a given primitive/specific/derived type.
+- `not(selector)` exclude from the selection.
+- `where(%name ? value)` compares `%name` to a literal value. All of `%name`'s values must match.
+- `wheresome(%name ? value)` compares `%name` to a literal value. At least one of `%name`'s values must match.
+- `wherenone(%name ? value)` compares `%name` to a literal value. None of `%name`'s values must match.
+- `enter(selector)` triggers once for each appearing item.
+- `update(selector)` triggers everytime there's a change.
+- `exit(selector)` triggers once for each disappearing item.
+- `select(function)` calls a user-defined function on the current selection.
+
+Then we can have user-defined functions, written in the host language and registered properly. This is where you'd make complex tests on values, and so on.
 
 ### Object entities
 
