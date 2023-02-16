@@ -156,7 +156,7 @@ Then we have the following filters (below, `?` is one of `=` `!=` `>=` `<=` `>` 
 
 Careful, you can't have a simple `div` selector, you have to put it inside a `type()` filter.
 
-Then we can have user-defined functions, written in the host language and registered properly. This is where you'd make complex tests on complex values (i.e. tensors?), and so on.
+Then you can have user-defined functions, written in the host language and registered properly. This is where you'd make complex tests on complex values (i.e. tensors?), and so on.
 
 Like, `ref{ $Ferrari %model where(%year < 1990) }`
 
