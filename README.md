@@ -158,6 +158,12 @@ Then we can have user-defined functions, written in the host language and regist
 
 Like, `ref{ $Ferrari %model where(%year < 1990) }`
 
+### Meaning of names
+
+Global and local names are awesome. Global `$names` are unique, end of story. Unique things are unique. Local `%names` are another story. They mean things get (quantically?) accumulated by name (which simplifies the observer pattern), because local names are locally unique. Types are another sort of accumulation.
+
+Selection rules observe. When triggered, they launch formulae.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
