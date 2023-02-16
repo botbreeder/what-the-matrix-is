@@ -164,6 +164,8 @@ OpenDDL's global and local names are awesome. Global `$names` are unique, end of
 
 Selection rules observe. When triggered, they launch formulae.
 
+Still needs docs though.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
