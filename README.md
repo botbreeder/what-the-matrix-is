@@ -203,8 +203,6 @@ is
 ]
 ```
 
-Dodge this.
-
 ### Meaning of names
 
 OpenDDL's global and local names are awesome. Global `$names` are unique, end of story. Unique things are unique. Local `%names` are another story. They mean things get (quantically?) accumulated by name (which simplifies the observer pattern), because local names are locally unique. Types are another sort of accumulation (without local uniqueness), and of course properties too.
