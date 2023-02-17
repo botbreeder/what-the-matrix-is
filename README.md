@@ -105,6 +105,10 @@ word            word        w
 
 where `word` can be an identifier or a name, including the initial `$` or `%` as needed.
 
+#### Local names
+
+About local `%names`, I'll put an additional constraint. An item with a local name cannot have the same name as its containing item. That's because we want to be able to refer to the parent easily, in Narratives.
+
 ## Computation
 
 As in [ECS](https://en.wikipedia.org/wiki/Entity_component_system) architectures, systems react to what's inside structures. They can react to values, substructures, local names, anything. But they only work when there's a change, to produce a new stable value. When one of the components of the structure changes, all systems _interested in this component_ will recalculate their value.
@@ -207,17 +211,38 @@ is
 
 OpenDDL's global and local names are awesome. Global `$names` are unique, end of story. Unique things are unique. Local `%names` are another story. They mean things get (quantically?) accumulated by name (which simplifies the observer pattern), because local names are locally unique. Types are another sort of accumulation (without local uniqueness), and of course properties too.
 
-- Selection rules observe the accumulations.
+- The selection rules of systems observe the accumulations.
 - When triggered, they launch formulae.
 - The formulae feed the accumulations (entering, updating, exiting).
 
-Still needs doc though.
-
 ### Relations
 
-Relations are mainly natural language.
+Relations are mainly natural language. They are strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call them Narratives.
+
+```
+Narrative:string
+{
+    "%Jackie is a $Cat",
+    "%Jackie believes that %WhoOwnsWho"
+},
+Narrative:string %WhoOwnsWho
+{
+    "%Jane belongs to %Jackie"
+}
+```
 
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components.
+
+
+
+
+
+
+
+
+
+
+
 
