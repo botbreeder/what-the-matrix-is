@@ -217,7 +217,7 @@ About local `%names`, I'll put an additional constraint. An item with a local na
 
 ### Relations
 
-Relations are mainly made of natural language and spatial data: lights, materials, textures, meshes, sounds, cameras, etc. They contain strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call these strings Narratives.
+Relations are mainly made of natural language and spatial data: lights, materials, textures, meshes, sounds, cameras, etc. They contain strings that link names. We call these strings Narratives. The names can be global or local, and may refer to any value, including other (named) narratives and references.
 
 ```
 Relation
@@ -233,6 +233,8 @@ Relation
     }
 }
 ```
+
+The whole point is to put the _narrative_ into the _spatial_. Lights, materials, textures, meshes, sounds, etc, are _made of_ narrative. 
 
 ### Object entities
 
