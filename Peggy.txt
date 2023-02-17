@@ -30,8 +30,8 @@ _
 
 
 Structure
-= s:PrimitiveStructure _ { return s; }
-/ s:DerivedStructure _ { return s; }
+= ','? _ s:PrimitiveStructure _ { return s; }
+/ ','? _ s:DerivedStructure _ { return s; }
 
 
 PrimitiveStructure
