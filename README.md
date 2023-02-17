@@ -215,6 +215,8 @@ OpenDDL's global and local names are awesome. Global `$names` are unique, end of
 - When triggered, they launch formulae.
 - The formulae feed the accumulations (entering, updating, exiting).
 
+ECS architectures _love_ accumulations.
+
 ### Relations
 
 Relations are mainly natural language. They are strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call them Narratives.
