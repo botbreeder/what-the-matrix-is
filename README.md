@@ -213,7 +213,7 @@ OpenDDL's global and local names are awesome. Global `$names` are unique, end of
 
 ECS architectures _love_ accumulations.
 
-About local `%names`, I'll put an additional constraint. An item with a local name cannot have the same name as its containing item. That's because we want to be able to refer to the parent easily, in Narratives. If you mention the `%name` of the container, there's no ambiguity: you're refering to it.
+About local `%names`, I'll put an additional constraint. An item with a local name cannot have the same name as the item that contains it. That's because we want to be able to refer to the parent easily, in Narratives. If you mention the `%name` of the container, there's no ambiguity: you're refering to it.
 
 ### Relations
 
