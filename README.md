@@ -219,7 +219,7 @@ ECS architectures _love_ accumulations.
 
 ### Relations
 
-Relations are mainly made of natural language and spatial data. They contain strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call these strings Narratives.
+Relations are mainly made of natural language and spatial data: lights, materials, textures, meshes, sounds, cameras, etc. They contain strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call these strings Narratives.
 
 ```
 Relation
