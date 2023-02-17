@@ -240,7 +240,7 @@ The whole point is to put the _narrative_ into the _spatial_. Lights, materials,
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components. Nothing new here, we still build by composition.
 
-We can follow a _prototype_ approach. A prototype is like an Oentity instance, but with holes. We can clone it and fill in the blanks. If we want delegation, that would mean having `prototype:ref{ }` references that point to one or more prototypes, and resolving `%names` against the prototypes chains.
+We can follow a _prototype_ approach though. A prototype is like an Oentity instance, but with holes. We can clone it and fill in the blanks. If we want delegation, that would mean having `prototype:ref{ }` references that point to one or more prototypes (composing it), and resolving `%names` against the prototypes chains.
 
 
 
