@@ -222,14 +222,16 @@ ECS architectures _love_ accumulations.
 Relations are mainly made of natural language and spatial data. They contain strings that link names. These names can be global or local, and may refer to any value, including other (named) relations. We call these strings Narratives.
 
 ```
-Narrative:string
-{
-    "%Jackie is a $Cat",
-    "%Jackie believes that %WhoOwnsWho"
-},
-Narrative:string %WhoOwnsWho
-{
-    "%Jane belongs to %Jackie"
+Relation {
+    Narrative:string
+    {
+        "%Jackie is a $Cat",
+        "%Jackie believes that %WhoOwnsWho"
+    },
+    Narrative:string %WhoOwnsWho
+    {
+        "%Jane belongs to %Jackie"
+    }
 }
 ```
 
