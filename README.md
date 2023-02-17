@@ -105,10 +105,6 @@ word            word        w
 
 where `word` can be an identifier or a name, including the initial `$` or `%` as needed.
 
-#### Local names
-
-About local `%names`, I'll put an additional constraint. An item with a local name cannot have the same name as its containing item. That's because we want to be able to refer to the parent easily, in Narratives.
-
 ## Computation
 
 As in [ECS](https://en.wikipedia.org/wiki/Entity_component_system) architectures, systems react to what's inside structures. They can react to values, substructures, local names, anything. But they only work when there's a change, to produce a new stable value. When one of the components of the structure changes, all systems _interested in this component_ will recalculate their value.
@@ -216,6 +212,8 @@ OpenDDL's global and local names are awesome. Global `$names` are unique, end of
 - The formulae feed the accumulations (entering, updating, exiting).
 
 ECS architectures _love_ accumulations.
+
+About local `%names`, I'll put an additional constraint. An item with a local name cannot have the same name as its containing item. That's because we want to be able to refer to the parent easily, in Narratives. If you mention the `%name` of the container, there's no ambiguity: you're refering to it.
 
 ### Relations
 
