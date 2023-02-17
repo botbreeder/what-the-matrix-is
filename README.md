@@ -234,7 +234,7 @@ Relation
 }
 ```
 
-The whole point is to put the _narrative_ into the _spatial_. Lights, materials, textures, meshes, sounds, etc, are _made of_ narrative. 
+The whole point is to put the _narrative_ into the _spatial_. Lights, materials, textures, meshes, sounds, etc, are _the shapes of_ narrative. 
 
 ### Object entities
 
