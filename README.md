@@ -5,7 +5,7 @@ A 3D world engine, with semantic textures applied to meshes, lights and sounds.
 
 If an AI is connected to a text-world, capable of showing plausible cause-consequence chains, the percepts we feed it with would be like textual descriptions floating dynamically in a 3D space. For visual and audio senses, a typical 3d game engine, running headless, could provide the space-time skeleton on which "semantic textures", made of qualitative/quantitive descriptions (potentially expressed in a subset of a natural language), could be applied to form this world.
 
-The name of the game is still [Open City](https://github.com/botbreeder/open-city).
+The name of the game is still [Open City](https://github.com/botbreeder/open-city). Evolving.
 
 ## Percepts
 
