@@ -22,7 +22,7 @@
 
 
 Document
-= _ s:Structure* { return s; }
+= _ s:Structure* _ ','? _ { return s; }
 
 
 _
