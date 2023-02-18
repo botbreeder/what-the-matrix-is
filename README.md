@@ -242,6 +242,8 @@ Lights, materials, textures, meshes, sounds, etc, are _the vectors of_ the narra
 
 It seems to mean that, this kind of code has to be inside the 3D engine's code. Of course it would be better to stay outside and follow the updates of the 3D engine. A method is needed to hook it up in unusual places.
 
+Pragmatically, using a 3D math library like [math.gl](https://math.gl/docs) feels like a good option.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components. Nothing new here, we still build by composition.
