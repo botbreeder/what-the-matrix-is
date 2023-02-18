@@ -242,7 +242,7 @@ Lights, materials, textures, meshes, sounds, etc, are _the vectors of_ the narra
 
 It seems to mean that, this kind of code has to be inside the 3D engine's code. Of course it would be better to stay outside and follow the updates of the 3D engine. A method is needed to hook it up in unusual places.
 
-THREEjs and BabylonJS are viable. Pragmatically, using a 3D math library like [math.gl](https://math.gl/docs) feels like a good option too.
+THREEjs and BabylonJS are viable. Like, rebuilding them starting from the per-frame rendering entry point. Pragmatically, using a 3D math library like [math.gl](https://math.gl/docs) feels like a good option too.
 
 ### Object entities
 
