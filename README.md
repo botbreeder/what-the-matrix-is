@@ -236,7 +236,9 @@ Relation
 }
 ```
 
-The whole point is to put the _narrative_ into the _spatial_. Lights, materials, textures, meshes, sounds, etc, are _the shapes of_ narrative. 
+The whole point is to put the _narrative_ into the _spatial_.
+
+Lights, materials, textures, meshes, sounds, etc, are _the shapes of_ the narrative elements. They are the way the narrative elements get in touch and interact.
 
 ### Object entities
 
