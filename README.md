@@ -250,7 +250,7 @@ Object entities need models and init functions. It's like OOrientedness, but it'
 
 We can follow a _prototype_ approach though. A prototype is like an Oentity instance, but with holes. We can clone it and fill in the blanks. If we want delegation, that would mean having `prototype:ref{ }` references that point to one or more prototypes (composing it), and resolving `%names` against the prototypes chains.
 
-# Energy
+# 🚀 Energy
 
 
 
