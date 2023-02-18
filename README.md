@@ -240,6 +240,8 @@ The whole point is to put the _narrative_ into the _spatial_.
 
 Lights, materials, textures, meshes, sounds, etc, are _the shapes of_ the narrative elements. They are the way the narrative elements get in touch and interact.
 
+It seems to mean that, this kind of code has to be inside the 3D engine's code.
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components. Nothing new here, we still build by composition.
