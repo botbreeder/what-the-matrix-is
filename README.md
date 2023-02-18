@@ -240,7 +240,7 @@ The whole point is to put the _narrative_ into the _spatial_.
 
 Lights, materials, textures, meshes, sounds, etc, are _the vectors of_ the narrative elements. They are the way the narrative elements get in touch and interact. These vectors describe the propagation of the influence of things.
 
-It seems to mean that, this kind of code has to be inside the 3D engine's code.
+It seems to mean that, this kind of code has to be inside the 3D engine's code. Of course it would be better to stay outside and follow the updates of the 3D engine.
 
 ### Object entities
 
