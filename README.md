@@ -154,7 +154,7 @@ Then we have the following filters (below, `?` is one of `=` `!=` `>=` `<=` `>` 
 - `enter(selector)` triggers once for each appearing item.
 - `update(selector)` triggers everytime there's a change.
 - `exit(selector)` triggers once for each disappearing item.
-- `select(function)` calls a user-defined function on the current selection.
+- `select(function call)` calls a user-defined function on the current selection.
 
 Careful, you can't have a simple `div`-like selector, you have to put it inside a `type()` filter, as in `type(EmailAddress:string)`.
 
