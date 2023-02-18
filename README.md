@@ -246,6 +246,8 @@ THREEjs and BabylonJS are viable. Like, rebuilding them starting from the per-fr
 
 Using colors as IDs might prove useful.
 
+There are 3D selectors!
+
 ### Object entities
 
 Object entities need models and init functions. It's like OOrientedness, but it's about entities of an ECS architecture. Oentities can be tangible 3D objects or narrative artefacts in 3D (i.e. events). They are usually made of several structures working together. This concept is not a runtime necessity, but a dev tool, a way to author stuff. Once running, it's all structures and components. Nothing new here, we still build by composition.
