@@ -246,7 +246,7 @@ THREEjs and BabylonJS are viable. Like, rebuilding them starting from the per-fr
 
 Using colors as IDs might prove useful.
 
-There are 3D selectors!
+There are 3D selectors! They come in the so-called user-defined functions.
 
 ### Object entities
 
