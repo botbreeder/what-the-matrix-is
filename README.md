@@ -205,6 +205,8 @@ is
 ]
 ```
 
+There can be 3D selectors. They come in the so-called user-defined functions. 
+
 ### Meaning of names
 
 OpenDDL's global and local names are awesome. Global `$names` are unique, end of story. Unique things are unique. Local `%names` are another story. They mean things get (quantically?) accumulated by name (which simplifies the observer pattern), because local names are locally unique. Types are another sort of accumulation (without local uniqueness), and of course properties too.
@@ -245,8 +247,6 @@ It seems to mean that, this kind of code has to be inside the 3D engine's code. 
 THREEjs and BabylonJS are viable. Like, rebuilding them starting from the per-frame rendering entry point (the Smalltalk way). Pragmatically, using a 3D math library like [math.gl](https://math.gl/docs) feels like a good option too.
 
 Using colors as IDs might prove useful.
-
-There could be 3D selectors. They'd come in the so-called user-defined functions. 
 
 ### Object entities
 
